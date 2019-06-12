@@ -1,7 +1,18 @@
-const express = require('express')
-const app = express()
-const port = 3000
+const app = require('./app')
+const http = require('http')
+const socketIo = require('socket.io')
+const port = 3001
 
-app.get('/', (req, res) => res.send('Hello World!'))
+const server = http.createServer(app)
+const io = socketIo(server)
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+io.on('connection', socket => {
+  console.log('a user connected')
+
+  socket.on('chat', (data) => {
+    console.log(data)
+    io.emit('chat', data)
+  })
+})
+
+server.listen(port, () => console.log(`Example app listening on port ${port}!`))

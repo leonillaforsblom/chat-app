@@ -11,14 +11,18 @@
     "type": "git",
     "url": "git+https://github.com/leonillaforsblom/chat-app.git"
   },
-  "author": "",
+  "author": "Leonilla",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/leonillaforsblom/chat-app/issues"
   },
   "homepage": "https://github.com/leonillaforsblom/chat-app#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
-    "nodemon": "^1.19.1"
+    "http": "0.0.0",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.19.1",
+    "socket.io": "^2.2.0"
   }
 }
