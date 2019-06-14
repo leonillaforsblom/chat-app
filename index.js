@@ -1,7 +1,11 @@
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
 const app = require('./app')
 const http = require('http')
 const socketIo = require('socket.io')
-const port = 3001
+const PORT = process.env.PORT || 3001
 
 const server = http.createServer(app)
 const io = socketIo(server)
@@ -19,4 +23,4 @@ io.on('connection', socket => {
   })
 })
 
-server.listen(port, () => console.log(`Example app listening on port ${port}!`))
+server.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`))
