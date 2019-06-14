@@ -9,9 +9,13 @@ const io = socketIo(server)
 io.on('connection', socket => {
   console.log('a user connected')
 
-  socket.on('chat', (data) => {
+  socket.on('chat', data => {
     console.log(data)
     io.emit('chat', data)
+  })
+  socket.on('typing', () => {
+    console.log('User typing')
+    socket.broadcast.emit('typing')
   })
 })
 
