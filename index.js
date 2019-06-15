@@ -8,7 +8,9 @@ const socketIo = require('socket.io')
 const PORT = process.env.PORT || 3001
 
 const server = http.createServer(app)
-const io = socketIo(server)
+const io = socketIo.listen(server)
+
+server.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`))
 
 io.on('connection', socket => {
   console.log('a user connected')
@@ -22,5 +24,3 @@ io.on('connection', socket => {
     socket.broadcast.emit('typing')
   })
 })
-
-server.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`))
